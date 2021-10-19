@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-g!hd!eq8-_rt&stu+6@sacc20^6lo6vbvgm+ek484kf#3h6dr1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1",
+                 "https://django-crud-hnazmul-1st.herokuapp.com"]
 
 
 # Application definition
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,6 +128,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#manually Added 
+# manually Added
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # APPEND_SLASH = False
