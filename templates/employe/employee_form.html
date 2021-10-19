@@ -1,0 +1,63 @@
+{% extends 'employe/base.html' %}
+{% block body %}
+
+<section id="viewport">
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="col-lg-7 mx-auto form">
+                <form action="/employee/" method="POST" >
+                    {% csrf_token %}
+                    <h3 class="mb-3 text-center">Enter Employee Details</h3>
+
+                    <div class="mb-3">
+                        <label for="full-name">Enter Your Full Name</label>
+                        <input name="fullname" type="text" class="form-control" id="full-name" required>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-3 mb-lg-0">
+                            <label for="emp-code">Emp Code</label>
+                            <input name="empCode" type="text" class="form-control" id="code" required>
+                        </div>
+                        <div class="col-md-6 mb-3 mb-lg-0">
+                            <label for="position">Select Position</label>
+                            <select name="position" class="form-select" id="position" required>
+                                {% for position in all_positions %}
+                                    <option value="{{position.id}}">{{position.title}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mobile-number mb-3">
+                        <label for="mobile-number">Mobile Number</label>
+                        <div class="input-group">
+                            <button class="input-group-text">+880</button><input name="mobile" type="text" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-5 justify-content-center align-items-center">
+                        <button type="submit" class="submit-btn classic-btn mx-2">
+                            <span class="iconify-inline" data-icon="fa-solid:database"></span>
+                            <span>Submit</span>
+                        </button>
+                        <a href="{% url 'employee_list' %}"
+                            class="d-inline-block ms-5 text-light text-decoration-none"><span
+                                class="iconify-inline" data-icon="akar-icons:circle-chevron-left"></span> <span>Back To
+                                Employee List</span></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="corner-1"></div>
+    <div class="made-width container-fluid">
+        <div class="d-flex align-items-center justify-content-end">
+            <h3 class="flex-shrink-0">Made With Python & Django</h3>
+            <img src="/static/images/python.svg" class="mx-1" alt="">
+            <img src="/static/images/Django.svg" class="mx-1" alt="">
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,59 @@
+{% extends 'employe/base.html' %}
+
+{% block body %}
+
+<section id="viewport">
+    <div class="container">
+        <div class="form-wrapper ">
+            <div class="col-md-8 mx-auto form">
+                <h3 class="text-center">List Off All Employee</h3>
+                <hr class="my-1" style="height: 1px;opacity: 0.3;">
+                <div class="table-wrapper" style=>
+                    <div class="table-table-responsive table-container">
+                        <table class="table employee-table">
+                            <thead>
+                                <tr>
+                                    <th>Serial</td>
+                                    <th>Name</td>
+                                    <th>Mobile Number</td>
+                                    <th>Position</td>
+                                    <th>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for employee in allEmployee %}
+                                <tr class="table-row">
+                                    <td>{{employee.id}}</td>
+                                    <td>{{employee.fullname}}</td>
+                                    <td>{{employee.mobile}}</td>
+                                    <td>{{employee.position}}</td>
+                                    <td class="action-btn">
+                                        <a href="{% url 'delete_employe' employee.id %}" class="d-inline-block text-light"><span class="iconify-inline" data-icon="bi:trash"></span></a>
+                                        <a href="{% url 'employee_update' employee.id %}" class="d-inline-block text-light"><span class="iconify-inline" data-icon="majesticons:pencil-alt-line"></span></a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="{% url 'employee_form' %}" class="classic-btn btn">Add Employee</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="corner-1"></div>
+    <div class="made-width container-fluid">
+        <div class="d-flex align-items-center justify-content-end">
+            <h3 class="flex-shrink-0">Made With Python & Django</h3>
+            <img src="/static/images/python.svg" class="mx-1" alt="">
+            <img src="/static/images/Django.svg" class="mx-1" alt="">
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
