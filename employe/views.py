@@ -25,13 +25,13 @@ def employee_update(request,id):
     employee = EmployeeModel.objects.get(pk=id)
     positions = Position.objects.all()
     if request.method =="POST":
-            newName = request.POST["fullname"] if request.POST["fullname"] != None else employee["fullname"]
-            newPosition = Position.objects.get(title=request.POST["position"]) or employee["position"]
-            newEmpCode = request.POST["empCode"] or employee["empCode"]
-            newMobile = request.POST["mobile"] or employee["mobile"]
-            print(newPosition)
-            EmployeeModel.objects.filter(pk=id).update(fullname=newName,position=newPosition,empCode=newEmpCode,mobile=newMobile)
-            return redirect("employee_list")
+        newName = request.POST["fullname"] if request.POST["fullname"] != None else employee["fullname"]
+        newPosition = Position.objects.get(title=request.POST["position"]) or employee["position"]
+        newEmpCode = request.POST["empCode"] or employee["empCode"]
+        newMobile = request.POST["mobile"] or employee["mobile"]
+        print(newPosition)
+        EmployeeModel.objects.filter(pk=id).update(fullname=newName,position=newPosition,empCode=newEmpCode,mobile=newMobile)
+        return redirect("employee_list")
     return render(request,"employe/employee_update.html",{"exitingData":employee,"all_positions":positions})
 
 
